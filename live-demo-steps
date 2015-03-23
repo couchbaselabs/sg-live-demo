@@ -1,0 +1,66 @@
+bot-unu
+
+Connect using HTTP
+
+curl -X GET http://localhost:4984/kitchen-sync/
+
+
+connect using HTTPS but no auth
+
+curl -k -X GET https://localhost:4984/kitchen-sync/
+
+
+Connect with auth
+
+curl -k -X GET https://bot-unu:53cure@localhost:4984/kitchen-sync/
+
+
+Insert doc with no “owner” property - forbidden
+
+curl -k -X PUT https://bot-unu:53cure@localhost:4984/kitchen-sync/doc1 -H "Content-Type: application/json" -d '{"text": "Why is a…"}'
+
+
+
+Insert doc with owner property that does not match authenticated user
+
+curl -k -X PUT https://bot-unu:53cure@localhost:4984/kitchen-sync/doc1 -H "Content-Type: application/json" -d '{"owner":"C3PO", "text": "Why is a…"}'
+
+
+
+Insert the first rev of doc2
+
+curl -k -X PUT https://bot-unu:53cure@localhost:4984/kitchen-sync/doc2 -H "Content-Type: application/json" -d '{"owner":"bot-unu", "text": "Why is a…"}'
+
+
+
+bot-tri
+
+Attempt to post an update to a doc with a different doc.owner
+
+curl -k -X PUT https://bot-tri:53cure@localhost:4984/kitchen-sync/doc2 -H "Content-Type: application/json" -d '{"_rev":"1-33df5e4cef77b46bce50e606c40e84cc", "owner":"bot-unu", "text": "Why is a…"}'
+
+
+
+bot-du
+
+Attempt to create a document, missing creator role
+
+curl -k -X PUT https://bot-du:53cure@localhost:4984/kitchen-sync/doc3 -H "Content-Type: application/json" -d '{"owner":"bot-du", "text": "Why is a…"}'
+
+
+bot-unu
+
+Posts a press release document that goes to the generic channel
+
+curl -k -X PUT https://bot-unu:53cure@localhost:4984/kitchen-sync/press-release1 -H "Content-Type: application/json" -d '{"owner":"bot-unu", "category":"press-release", "text": "Why is a…"}'
+
+
+Posts a press release document that goes to the generic channel and adds bot-tri as a specific reader.
+
+curl -k -X PUT https://bot-unu:53cure@localhost:4984/kitchen-sync/press-release2 -H "Content-Type: application/json" -d '{"owner":"bot-unu", "category":"press-release", "readers":"bot-tri", "text": "Why is a…"}'
+
+
+Post a private doc with just bot-du as a named reader
+
+curl -k -X PUT https://bot-unu:53cure@localhost:4984/kitchen-sync/press-release3 -H "Content-Type: application/json" -d '{"owner":"bot-unu", "readers":"bot-du", "text": "Why is a…"}'
+
