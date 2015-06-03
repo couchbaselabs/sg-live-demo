@@ -19,12 +19,7 @@
 	  },
 	  "sync": `
 	  	function(doc,oldDoc) {
-          if(doc.type == "friends" ) {
-            access(doc.friends, "items-"+doc.owner);
-          } else {
-            requireUser(owner);
-            channel("items-"+doc.owner);
-          }
+		  channel("items-"+doc.owner);
 		}
 	  `
 	}

@@ -25,7 +25,7 @@
             channel(“private-”+doc.owner);
             access(doc.owner,“private-”+doc.owner);
           } else if(doc.type == "item" ) {
-			requireAccess("items-"+doc.owner)
+			requireUser(doc.owner);
 			channel("items-"+doc.owner);
 		  } else {
 			throw("Invalid document type");

@@ -31,6 +31,9 @@
 				throw("New items can not be checked");
 			  }
 		  	} else {
+			  if(doc.owner != oldDoc.owner) {
+				throw(“Quit trying to steal items!”);
+			  }
 			  if(doc.check != oldDoc.check) {
 				requireUser(doc.owner);
 			  }

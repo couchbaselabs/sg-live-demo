@@ -27,14 +27,10 @@
           } else if(doc.type == "item" ) {
 			requireAccess("items-"+doc.owner);
 			if(oldDoc == null) {
-			  if(doc.checked == true) {
+			  if(doc.check == true) {
 				throw("New items can not be checked");
 			  }
-		  	} else {
-			  if(doc.check != oldDoc.checked) {
-				requireUser(doc.owner);
-			  }
-			}
+		  	}
 			channel("items-"+doc.owner);
 		  } else {
 			throw("Invalid document type");

@@ -17,11 +17,9 @@
 		  "admin_channels": ["items-bob"]
 		}
 	  },
-	  "sync": `
-	  	function(doc,oldDoc) {
-		  channel("items-"+doc.owner);
-		}
-	  `
+      "sync": `
+        function(doc,oldDoc) {}
+      `
 	}
   }
 }

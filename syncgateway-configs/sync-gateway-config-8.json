@@ -25,12 +25,7 @@
             channel(“private-”+doc.owner);
             access(doc.owner,“private-”+doc.owner);
           } else if(doc.type == "item" ) {
-			requireAccess("items-"+doc.owner);
-			if(oldDoc == null) {
-			  if(doc.check == true) {
-				throw("New items can not be checked");
-			  }
-		  	}
+			requireAccess("items-"+doc.owner)
 			channel("items-"+doc.owner);
 		  } else {
 			throw("Invalid document type");
