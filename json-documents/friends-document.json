@@ -1,0 +1,5 @@
+{
+  "type": "friends",
+  "owner": "bob",
+  "friends": ["alice"]
+}

@@ -1,0 +1,23 @@
+{
+  "log": ["*"],
+  "databases": {
+    "grocery-sync": {
+      "server": "walrus:",
+      "bucket": "grocery-sync",
+      "users": {
+        "alice": {
+          "disabled": false,
+          "password": "password",
+          "admin_channels": ["*"]
+        },
+        "bob": {
+          "disabled": false,
+          "password": "password",
+          "admin_channels": ["*"]
+        }
+      }
+    }
+  }
+}
+
+

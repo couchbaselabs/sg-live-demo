@@ -1,0 +1,39 @@
+{
+  "log": ["*"],
+  "databases": {
+	"grocery-sync": {
+	  "server": "walrus:",
+	  "bucket": "grocery-sync",
+	  "users": {
+		"GUEST": {"disabled": true},
+		"alice": {
+		  "disabled": false,
+		  "password": "password",
+		  "admin_channels": ["items-alice"]
+		},
+		"bob": {
+		  "disabled": false,
+		  "password": "password",
+		  "admin_channels": ["items-alice"]
+		}
+	  },
+	  "sync": `
+	  	function(doc,oldDoc) {
+          if(doc.type == "friends" ) {
+			requireUser(owner);
+            access(doc.friends, "items-"+doc.owner);
+            channel(“private-”+doc.owner);
+            access(doc.owner,“private-”+doc.owner);
+          } else {
+            requireUser(owner);
+            channel("items-"+doc.owner);
+          }
+		}
+	  `
+	}
+  }
+}
+
+
+
+

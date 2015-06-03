@@ -1,0 +1,29 @@
+{
+  "log": ["*"],
+  "databases": {
+	"grocery-sync": {
+	  "server": "walrus:",
+	  "bucket": "grocery-sync",
+	  "users": {
+		"GUEST": {"disabled": true},
+		"alice": {
+		  "disabled": false,
+		  "password": "password",
+		  "admin_channels": ["*"]
+		},
+		"bob": {
+		  "disabled": false,
+		  "password": "password",
+          "admin_channels": ["*"]
+		}
+	  },
+      "sync": `
+        function(doc,oldDoc) {}
+      `
+	}
+  }
+}
+
+
+
+
