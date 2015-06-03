@@ -14,7 +14,7 @@
 		"bob": {
 		  "disabled": false,
 		  "password": "password",
-		  "admin_channels": ["items-alice"]
+		  "admin_channels": ["items-bob"]
 		}
 	  },
 	  "sync": `
