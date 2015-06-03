@@ -5,7 +5,6 @@
 	  "server": "walrus:",
 	  "bucket": "grocery-sync",
 	  "users": {
-		"GUEST": {"disabled": true},
 		"alice": {
 		  "disabled": false,
 		  "password": "password",
@@ -18,7 +17,9 @@
 		}
 	  },
       "sync": `
-        function(doc,oldDoc) {}
+        function(doc,oldDoc) {
+          // Add a placeholder sync function, we will add our custom read/write logic here
+        }
       `
 	}
   }

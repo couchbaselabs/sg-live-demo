@@ -5,7 +5,6 @@
 	  "server": "walrus:",
 	  "bucket": "grocery-sync",
 	  "users": {
-		"GUEST": {"disabled": true},
 		"alice": {
 		  "disabled": false,
 		  "password": "password",
@@ -22,8 +21,8 @@
           if(doc.type == "friends" ) {
 			requireUser(doc.owner);
             access(doc.friends, "items-"+doc.owner);
-            channel(“private-”+doc.owner);
-            access(doc.owner,“private-”+doc.owner);
+            channel("private-"+doc.owner);
+            access(doc.owner,"private-"+doc.owner);
           } else if(doc.type == "item" ) {
 			requireAccess("items-"+doc.owner);
 			if(oldDoc == null) {
@@ -31,14 +30,15 @@
 				throw("New items can not be checked");
 			  }
 		  	} else {
-			  if(doc.owner != oldDoc.owner) {
-				throw(“Quit trying to steal items!”);
+			  if(doc.owner != oldDoc.owner) { //Prevent an item being moved to another owner
+				throw("Quit trying to steal items!");
 			  }
 			  if(doc.check != oldDoc.check) {
 				requireUser(doc.owner);
 			  }
 			}
 			channel("items-"+doc.owner);
+			access(doc.owner,"items-"+doc.owner);
 		  } else {
 			throw("Invalid document type");
 		  }

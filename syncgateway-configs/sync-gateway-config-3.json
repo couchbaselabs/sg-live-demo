@@ -5,20 +5,21 @@
 	  "server": "walrus:",
 	  "bucket": "grocery-sync",
 	  "users": {
-		"GUEST": {"disabled": true},
 		"alice": {
 		  "disabled": false,
 		  "password": "password",
-		  "admin_channels": ["items-alice"]
+          "admin_channels": ["items-alice"]
 		},
 		"bob": {
 		  "disabled": false,
 		  "password": "password",
-		  "admin_channels": ["items-bob"]
+          "admin_channels": ["items-bob"]
 		}
 	  },
       "sync": `
-        function(doc,oldDoc) {}
+        function(doc,oldDoc) {
+          // Add a placeholder sync function, we will add our custom read/write logic here
+        }
       `
 	}
   }

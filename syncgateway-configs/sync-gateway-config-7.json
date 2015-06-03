@@ -5,7 +5,6 @@
 	  "server": "walrus:",
 	  "bucket": "grocery-sync",
 	  "users": {
-		"GUEST": {"disabled": true},
 		"alice": {
 		  "disabled": false,
 		  "password": "password",
@@ -22,12 +21,13 @@
           if(doc.type == "friends" ) {
 			requireUser(doc.owner);
             access(doc.friends, "items-"+doc.owner);
-            channel(“private-”+doc.owner);
-            access(doc.owner,“private-”+doc.owner);
-          } else if(doc.type == "item" ) {
+            channel("private-"+doc.owner);
+            access(doc.owner,"private-"+doc.owner);
+          } else if(doc.type == "item" ) { //Now that we have a type property we can identify items
 			requireUser(doc.owner);
 			channel("items-"+doc.owner);
-		  } else {
+            access(doc.owner,"items-"+doc.owner);
+		  } else { //All other document types are invalid so reject them
 			throw("Invalid document type");
 		  }
 		}

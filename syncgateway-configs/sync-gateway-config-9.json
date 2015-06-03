@@ -5,7 +5,6 @@
 	  "server": "walrus:",
 	  "bucket": "grocery-sync",
 	  "users": {
-		"GUEST": {"disabled": true},
 		"alice": {
 		  "disabled": false,
 		  "password": "password",
@@ -22,16 +21,17 @@
           if(doc.type == "friends" ) {
 			requireUser(doc.owner);
             access(doc.friends, "items-"+doc.owner);
-            channel(“private-”+doc.owner);
-            access(doc.owner,“private-”+doc.owner);
+            channel("private-"+doc.owner);
+            access(doc.owner,"private-"+doc.owner);
           } else if(doc.type == "item" ) {
 			requireAccess("items-"+doc.owner);
-			if(oldDoc == null) {
+			if(oldDoc == null) { // When creating new items, make sure they are not checked
 			  if(doc.check == true) {
 				throw("New items can not be checked");
 			  }
 		  	}
 			channel("items-"+doc.owner);
+			access(doc.owner,"items-"+doc.owner);
 		  } else {
 			throw("Invalid document type");
 		  }

@@ -5,7 +5,6 @@
 	  "server": "walrus:",
 	  "bucket": "grocery-sync",
 	  "users": {
-		"GUEST": {"disabled": true},
 		"alice": {
 		  "disabled": false,
 		  "password": "password",
@@ -19,7 +18,8 @@
 	  },
 	  "sync": `
 	  	function(doc,oldDoc) {
-		  channel("items-"+doc.owner);
+		  channel("items-"+doc.owner); //Add an item document to the owner's items channel
+		  access(doc.owner,"items-"+doc.owner); //Give the owner access to their items channel
 		}
 	  `
 	}

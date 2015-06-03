@@ -5,22 +5,22 @@
 	  "server": "walrus:",
 	  "bucket": "grocery-sync",
 	  "users": {
-		"GUEST": {"disabled": true},
 		"alice": {
 		  "disabled": false,
 		  "password": "password",
-		  "admin_channels": ["items-alice"]
+          "admin_channels": ["items-alice"]
 		},
 		"bob": {
 		  "disabled": false,
 		  "password": "password",
-		  "admin_channels": ["items-bob"]
+          "admin_channels": ["items-bob"]
 		}
 	  },
 	  "sync": `
 	  	function(doc,oldDoc) {
-          requireUser(owner);
+          requireUser(doc.owner); //The owner of the item document must be the authenticated user
           channel("items-"+doc.owner);
+          access(doc.owner,"items-"+doc.owner);
 		}
 	  `
 	}
