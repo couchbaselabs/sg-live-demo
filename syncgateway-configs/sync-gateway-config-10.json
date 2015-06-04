@@ -35,7 +35,6 @@
 			  }
 			}
 			channel("items-"+doc.owner);
-			access(doc.owner,"items-"+doc.owner);
 		  } else {
 			throw("Invalid document type");
 		  }

@@ -19,7 +19,6 @@
 	  "sync": `
 	  	function(doc,oldDoc) {
 		  channel("items-"+doc.owner); //Add an item document to the owner's items channel
-		  access(doc.owner,"items-"+doc.owner); //Give the owner access to their items channel
 		}
 	  `
 	}

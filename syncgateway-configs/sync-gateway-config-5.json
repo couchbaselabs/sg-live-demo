@@ -20,7 +20,6 @@
 	  	function(doc,oldDoc) {
           requireUser(doc.owner); //The owner of the item document must be the authenticated user
           channel("items-"+doc.owner);
-          access(doc.owner,"items-"+doc.owner);
 		}
 	  `
 	}

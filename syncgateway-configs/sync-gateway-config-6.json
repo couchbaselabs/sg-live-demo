@@ -20,13 +20,12 @@
 	  	function(doc,oldDoc) {
           if(doc.type == "friends") { //Process the new friends document
 			requireUser(doc.owner); //The owner of the friends document must be the authenticated user
-            access(doc.friends, "items-"+doc.owner); //Give the owner access to their items channel
-            channel("private-"+doc.owner); //Add a friends document to the owner's private channel
+            access(doc.friends, "items-"+doc.owner); //Give friends access to the owners items channel
+            channel("private-"+doc.owner); //Add this friends document to the owner's private channel
             access(doc.owner,"private-"+doc.owner); //Give the owner access to their private channel
           } else {
             requireUser(doc.owner);
             channel("items-"+doc.owner);
-            access(doc.owner,"items-"+doc.owner);
           }
 		}
 	  `

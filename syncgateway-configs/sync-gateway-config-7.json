@@ -26,7 +26,6 @@
           } else if(doc.type == "item" ) { //Now that we have a type property we can identify items
 			requireUser(doc.owner);
 			channel("items-"+doc.owner);
-            access(doc.owner,"items-"+doc.owner);
 		  } else { //All other document types are invalid so reject them
 			throw("Invalid document type");
 		  }
