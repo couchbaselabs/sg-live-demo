@@ -27,11 +27,11 @@
 			requireAccess("items-"+doc.owner);
 			if(oldDoc == null) {
 			  if(doc.check == true) {
-				throw("New items can not be checked");
+				throw({forbidden:"New items can not be checked"});
 			  }
 		  	} else {
 			  if(doc.owner != oldDoc.owner) { //Prevent an item being moved to another owner
-				throw("Quit trying to steal items!");
+				throw({forbidden:"Quit trying to steal items!"});
 			  }
 			  if(doc.check != oldDoc.check) {
 				requireUser(doc.owner);
@@ -39,7 +39,7 @@
 			}
 			channel("items-"+doc.owner);
 		  } else {
-			throw("Invalid document type");
+			throw({forbidden:"Invalid document type"});
 		  }
 		}
 	  `
