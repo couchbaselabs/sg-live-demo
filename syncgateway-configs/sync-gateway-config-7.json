@@ -27,7 +27,7 @@
 			requireUser(doc.owner);
 			channel("items-"+doc.owner);
 		  } else { //All other document types are invalid so reject them
-			throw("Invalid document type");
+			throw({forbidden:"Invalid document type"});
 		  }
 		}
 	  `

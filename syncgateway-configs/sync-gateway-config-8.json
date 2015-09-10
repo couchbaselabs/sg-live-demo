@@ -27,7 +27,7 @@
 			requireAccess("items-"+doc.owner) //We want friends to be able to add items to the owners list
 			channel("items-"+doc.owner);
 		  } else {
-			throw("Invalid document type");
+			throw({forbidden:"Invalid document type"});
 		  }
 		}
 	  `

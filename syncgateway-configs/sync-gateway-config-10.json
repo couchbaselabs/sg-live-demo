@@ -27,7 +27,7 @@
 			requireAccess("items-"+doc.owner);
 			if(oldDoc == null) {
 			  if(doc.check == true) {
-				throw("New items can not be checked");
+				throw({forbidden:"New items can not be checked"});
 			  }
 		  	} else { //This is an update to an existing item
 			  if(doc.check != oldDoc.check) {
@@ -36,7 +36,7 @@
 			}
 			channel("items-"+doc.owner);
 		  } else {
-			throw("Invalid document type");
+			throw({forbidden:"Invalid document type"});
 		  }
 		}
 	  `

@@ -27,12 +27,12 @@
 			requireAccess("items-"+doc.owner);
 			if(oldDoc == null) { // When creating new items, make sure they are not checked
 			  if(doc.check == true) {
-				throw("New items can not be checked");
+				throw({forbidden:"New items can not be checked"});
 			  }
 		  	}
 			channel("items-"+doc.owner);
 		  } else {
-			throw("Invalid document type");
+			throw({forbidden:"Invalid document type"});
 		  }
 		}
 	  `
